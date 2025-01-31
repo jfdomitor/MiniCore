@@ -30,12 +30,10 @@ namespace MiniCore.Pages
                dbclient.CreateTable<ProductDependency>();
 
                var id = dbclient.InsertEntity(new Product{ Name="Mini Core", Dependencies=new List<ProductDependency>() });
-               dbclient.InsertEntity(new ProductDependency(){ Name="AspNetCore", Version="3.1", Purpose="The server side platform, razor, routing etc", ProductId=id });
-               dbclient.InsertEntity(new ProductDependency(){ Name="JQuery", Version="3.6.0", Purpose="To simplify client java scripts", ProductId=id });
+               dbclient.InsertEntity(new ProductDependency(){ Name="Net8", Version="3.1", Purpose="The server side platform, razor, routing etc", ProductId=id });
                dbclient.InsertEntity(new ProductDependency(){ Name="Vue.Js", Version="3", Purpose="Data binding, reactivity etc... client side", ProductId=id });
                dbclient.InsertEntity(new ProductDependency(){ Name="Bootstrap", Version="4", Purpose="A fast way to a nice looking UI", ProductId=id });
-               dbclient.InsertEntity(new ProductDependency(){ Name="Intwenty Data Client", Version="1.1.0", Purpose="Quick database access to common db engines", ProductId=id });
-               dbclient.InsertEntity(new ProductDependency(){ Name="SqlLite", Version="?", Purpose="A simple file db just for demo...", ProductId=id });
+               dbclient.InsertEntity(new ProductDependency(){ Name="Intwenty Data Client", Version="2.0.0", Purpose="Quick database access to common db engines", ProductId=id });
 
            }
 

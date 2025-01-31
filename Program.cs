@@ -14,7 +14,7 @@ public class Program
             //webBuilder.UseKestrel();
             webBuilder.ConfigureServices((buildercontext, services) =>
             {
-                services.AddRazorPages();
+                services.AddRazorPages().AddRazorRuntimeCompilation();
 
             }).Configure(app =>
             {
