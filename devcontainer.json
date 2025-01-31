@@ -1,0 +1,6 @@
+{
+    "name": "My .NET App",
+    "image": "mcr.microsoft.com/dotnet/sdk:8.0",
+    "forwardPorts": [5000, 5001]
+}
+  
