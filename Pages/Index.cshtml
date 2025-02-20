@@ -8,7 +8,7 @@
 <div class="container" id="app">
 
     <h2>
-        {{product.name}}</h1>
+        {{root.product.name}}</h1>
         <h4>A minimal reactive .net8 (razor) example</h4>
         <h6>It uses Vue3 to view some data from an sqllite database</h6>
         <h6>It defines an endpoint (handler) that is called after page load</h6>
@@ -25,7 +25,7 @@
             <th>Purpose</th>
             </thead>
             <tbody>
-                <tr v-for="item in product.dependencies">
+                <tr ba-foreach="item in root.product.dependencies">
                     <td>{{item.name}}</td>
                     <td>{{item.version}}</td>
                     <td>{{item.purpose}}</td>
@@ -40,35 +40,28 @@
 {
 
     <script>
+        var e = document.getElementById("app");
+        let dataset = {};
 
-        const SimpleVueApp = {
-            data() {
-                return {
-                    product: {}
-                }
-            },
-            methods:
-            {
-                getProduct: function () {
-                    var context = this;
-                    var baseurl = '@Url.Content("~")';
-                    var endpointurl = baseurl + "?handler=List";
-                    fetch(endpointurl)
-                        .then(response => {
-                            return response.json();
-                        })
-                        .then(product => {
-                            context.product = product;
-                        });
+        //create the app
+        const myapp = getApp(dataset, false);
+        myapp.printConsoleLogs();
+        myapp.enableConsoleLog(1,true);
 
-                }
-            },
-            mounted() {
-                this.getProduct();
-            }
+        //mount the app to the element where item should work
+        dataset = myapp.mount(e);
+
+        //get some data that will baseurl handled and bound getElementById the app
+        async function getData(){
+            var baseurl = '';
+            var endpointurl = baseurl + "?handler=List";
+            const response = await fetch(endpointurl);
+            const product = await response.json();
+            dataset.product = product;
         }
 
-        Vue.createApp(SimpleVueApp).mount('#app')
+        getData();
+      
 
     </script>
 
