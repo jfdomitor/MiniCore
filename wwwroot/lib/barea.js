@@ -923,7 +923,7 @@ class BareaApp {
 
     printConsoleLogs()
     {
-      console.log('barea.js available logs:');
+      console.log('barea.js available logs');
       this.#consoleLogs.forEach(p=> console.log(p));
     }
 

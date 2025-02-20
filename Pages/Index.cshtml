@@ -2,7 +2,7 @@
 @model MiniCore.Pages.IndexModel
 @{
     Layout = "_Layout";
-    ViewData["Title"] = ".Net Minimal";
+    ViewData["Title"] = "Mini Core";
 }
 
 <div class="container" id="app">
@@ -10,12 +10,11 @@
     <h2>
         {{root.product.name}}</h1>
         <h4>A minimal reactive .net8 (razor) example</h4>
-        <h6>It uses Vue3 to view some data from an sqllite database</h6>
-        <h6>It defines an endpoint (handler) that is called after page load</h6>
+        <p>It uses intwenty.dataclient to get some data from an an sqlite database</p>
+        <p>It uses barea.js to view some data</p>
+        <p>It defines a razor endpoint (handler) that is called after page load</p>
 
-        <img src="~/images/minicore.jpg" class="rounded m-3" width="500">
-
-
+        <img ba-img-src="root.image" class="rounded m-3" width="500">
 
         <h5>Dependencies / purpose</h5>
         <table class="table">
@@ -41,7 +40,7 @@
 
     <script>
         var e = document.getElementById("app");
-        let dataset = {};
+        let dataset = { image:"/images/minicore.jpg" };
 
         //create the app
         const myapp = getApp(dataset, false);

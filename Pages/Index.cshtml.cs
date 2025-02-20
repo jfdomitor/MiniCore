@@ -28,8 +28,8 @@ namespace MiniCore.Pages
 
                 var id = dbclient.InsertEntity(new Product { Name = "Mini Core", Dependencies = new List<ProductDependency>() });
                 dbclient.InsertEntity(new ProductDependency() { Name = "Net", Version = "8", Purpose = "The server side platform, razor, routing etc", ProductId = id });
-                dbclient.InsertEntity(new ProductDependency() { Name = "Vue", Version = "3", Purpose = "Data binding, reactivity etc... client side", ProductId = id });
-                dbclient.InsertEntity(new ProductDependency() { Name = "Bootstrap", Version = "4", Purpose = "A fast way to a nice looking UI", ProductId = id });
+                dbclient.InsertEntity(new ProductDependency() { Name = "Barea.js", Version = "1.0.0", Purpose = "Data binding, reactivity etc... client side", ProductId = id });
+                dbclient.InsertEntity(new ProductDependency() { Name = "Bootstrap", Version = "5.3.0", Purpose = "A fast way to a nice looking UI", ProductId = id });
                 dbclient.InsertEntity(new ProductDependency() { Name = "Intwenty Data Client", Version = "2.0.0", Purpose = "Quick database access to common databases", ProductId = id });
 
             }
