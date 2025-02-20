@@ -1,3 +1,6 @@
 # MiniCore
-A minimal reactive .net core (razor) example for vs code
+A truly minimal .net core (razor) example for vs code
+
+* Uses barea.js for client reactivity
+* Uses intwenty.dataclient to connect to sqlite
 
