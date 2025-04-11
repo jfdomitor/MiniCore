@@ -1,31 +1,25 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-public class Program
-{
-    public static void Main(string[] args) =>
+var builder = WebApplication.CreateBuilder(args);
 
-        Host.CreateDefaultBuilder(args)    
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            //webBuilder.UseKestrel();
-            webBuilder.ConfigureServices((buildercontext, services) =>
-            {
-                services.AddRazorPages().AddRazorRuntimeCompilation();
+#if DEBUG
+//Lägg till stöd för snabb omladdning endast vid debug
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
+#else
+builder.Services.AddRazorPages();
+#endif
 
-            }).Configure(app =>
-            {
-                app.UseStaticFiles();
-                app.UseRouting();
-                app.UseEndpoints(route =>
-                {
-                    route.MapRazorPages();
-                    //route.MapGet("/", context => context.Response.WriteAsync("Hello world"));
-                });
-            });
-        })
-        .Build().Run();
-}
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+//app.UseAuthorization();
+
+app.UseStaticFiles();
+app.MapRazorPages();
+
+app.Run();
